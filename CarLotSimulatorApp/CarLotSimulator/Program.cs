@@ -1,22 +1,66 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CarLotSimulator
 {
-    class Program
+    class 
+        Program
     {
         static void Main(string[] args)
         {
-            //TODO
+            
+            var carLot = new CarLot();
+            carLot.ParkingLot = new List<Car>();
+            var bmw = new Car();
+            bmw.Make = "BMW";
+            bmw.Year = 2022;
+            bmw.Model = "Cool";
+            bmw.EngineNoise = "Vroom Vroom";
+            bmw.HonkNoise = "beep beep";
+            bmw.IsDriveable = true;
 
-            //Create a seperate class file called Car
-            //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
-            //Car shall have the following methods: MakeEngineNoise(), MakeHonkNoise()
-            //The methods should take one string parameter: the respective noise property
+            
+
+            carLot.ParkingLot.Add(bmw);
+            bmw.MakeEngineNoise();
+            bmw.MakeHonkNoise();
+
+            Console.WriteLine(CarLot.numberOfCars);
+
+            var miniCooper = new Car(1999, "Mercedes", "Noice", "Vrooom", "beep boop", true);
+
+            miniCooper.MakeEngineNoise();
+            miniCooper.MakeHonkNoise();
+            carLot.ParkingLot.Add(miniCooper);
+
+            Console.WriteLine(CarLot.numberOfCars);
+
+            var truck = new Car()
+            {
+                Make = "Truck",
+                Year = 1991,
+                Model = "wow",
+                EngineNoise = "vrooooom",
+                HonkNoise = "meep moop",
+                IsDriveable = true,
 
 
-            //Now that the Car class is created we can instanciate 3 new cars
-            //Set the properties for each of the cars
-            //Call each of the methods for each car
+            };
+            truck.MakeEngineNoise();
+            truck.MakeHonkNoise();
+            carLot.ParkingLot.Add(truck);
+            Console.WriteLine(CarLot.numberOfCars);
+
+
+            foreach ( var car in carLot.ParkingLot)
+            {
+                Console.WriteLine($"year is {car.Year}, make is {car.Make}, and model is {car.Model}, and the engine sounds like ");
+                car.MakeEngineNoise();
+                car.MakeHonkNoise();
+            }
+
+
+
 
             //*************BONUS*************//
 
